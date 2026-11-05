@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -17,12 +18,13 @@ body {
 }
 
 .container {
-  margin-top: 70px;
+  margin-top: 30px;
   padding: 20px;
 }
 
 .logo {
   width: 350px;
+  max-width: 90%;
   height: auto;
   margin-bottom: 15px;
 }
@@ -40,6 +42,64 @@ h1 {
   color: #333;
 }
 
+/* شريط الخدمات المتحرك */
+.services-marquee {
+  width: 100%;
+  overflow: hidden;
+  background: #f5eadd;
+  border-radius: 25px;
+  padding: 12px 0;
+  margin: 0 auto 25px;
+  box-sizing: border-box;
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  direction: rtl;
+  animation: move-marquee 25s linear infinite;
+}
+
+.marquee-group {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  direction: rtl;
+}
+
+.service-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  font-size: 19px;
+  font-weight: 700;
+  color: #333;
+  padding: 0 12px;
+}
+
+.service-logo {
+  width: 42px;
+  height: 27px;
+  object-fit: contain;
+  mix-blend-mode: multiply;
+  margin: 0 12px;
+}
+
+@keyframes move-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.services-marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+/* الأزرار */
 .links a {
   display: flex;
   align-items: center;
@@ -96,9 +156,43 @@ h1 {
 }
 
 @media (max-width: 600px) {
+  .container {
+    margin-top: 20px;
+  }
+
+  .logo {
+    width: 300px;
+  }
+
+  .services-marquee {
+    border-radius: 18px;
+    padding: 10px 0;
+  }
+
+  .service-item {
+    font-size: 16px;
+    padding: 0 8px;
+  }
+
+  .service-logo {
+    width: 35px;
+    height: 23px;
+    margin: 0 8px;
+  }
+
+  .marquee-track {
+    animation-duration: 22s;
+  }
+
   .whatsapp-float {
     bottom: 5px;
     right: 10px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
   }
 }
 </style>
@@ -109,8 +203,44 @@ h1 {
 
 <div class="container">
 
-  <!-- اللوقو -->
-  <img class="logo" src="qissat-ward-logo.png.png">
+  <!-- اللوقو الرئيسي -->
+  <img class="logo" src="qissat-ward-logo.png.png" alt="قصة ورد Rose Story">
+
+  <!-- شريط الخدمات المتحرك -->
+  <div class="services-marquee">
+
+    <div class="marquee-track">
+
+      <!-- المجموعة الأولى -->
+      <div class="marquee-group">
+
+        <span class="service-item">ورود طبيعية</span>
+        <img class="service-logo" src="قصة ورد.png" alt="قصة ورد">
+
+        <span class="service-item">تغليف هدايا</span>
+        <img class="service-logo" src="قصة ورد.png" alt="قصة ورد">
+
+        <span class="service-item">تنسيق حفلات</span>
+        <img class="service-logo" src="قصة ورد.png" alt="قصة ورد">
+
+      </div>
+
+      <!-- المجموعة الثانية للتكرار المستمر -->
+      <div class="marquee-group" aria-hidden="true">
+
+        <span class="service-item">ورود طبيعية</span>
+        <img class="service-logo" src="قصة ورد.png" alt="">
+
+        <span class="service-item">تغليف هدايا</span>
+        <img class="service-logo" src="قصة ورد.png" alt="">
+
+        <span class="service-item">تنسيق حفلات</span>
+        <img class="service-logo" src="قصة ورد.png" alt="">
+
+      </div>
+
+    </div>
+  </div>
 
   <h1></h1>
 
